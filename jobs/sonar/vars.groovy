@@ -1,6 +1,3 @@
-env.ACCOUNT = "smaryn"
-env.PROJECT = "pipelines"
-
 env.DOCKER_UBUNTU_SONAR = "zensam/ubuntu4sonar:latest"
 
 env.JENKINS_M2DIR = "/var/lib/jenkins/storage/docker_m2"
