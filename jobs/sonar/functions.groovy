@@ -1,6 +1,6 @@
 def get_code(proj) {
   checkout([$class: 'GitSCM',
-            branches: [[name: "*/${GIT_BRANCH_NAME}"]],
+            branches: [[name: "*/${BRANCH_NAME}"]],
             doGenerateSubmoduleConfigurations: false,
             extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${proj}"], [$class: 'CloneOption', honorRefspec: true, noTags: true, reference: '', shallow: true]],
             //  extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${proj}"], [$class: 'CloneOption', honorRefspec: true, noTags: false, reference: '', shallow: true]],
