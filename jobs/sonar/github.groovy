@@ -14,6 +14,9 @@ node('master') {
 
           checkout scm
 
+          // Remove .git folder from workspace
+          // functions.rm()
+
           load "${PDIR}/vars.groovy"
           functions = load "${PDIR}/functions.groovy"
     }
@@ -22,18 +25,14 @@ node('master') {
       switch(PROTOCOL) {
         case "ssh":
           functions.get_code_ssh("${PROJECT}")
-
         break
 
         case "http":
           functions.get_code_http("${PROJECT}")
-
         break
-
 
         default:
           error("Protocol is not defined or unsupported")
-          
         break
       }
 

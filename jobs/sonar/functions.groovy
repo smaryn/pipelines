@@ -22,7 +22,7 @@ def get_code_http(proj) {
 def rm() {
   echo "Remove .git folder from workspace - ${WORKSPACE}"
   dir("${WORKSPACE}") {
-    sh("rm -rf {.git,.gitignore,docs,imgs,ansible,README.md}")
+    sh("rm -rf {.git,.gitignore}")
   }
 }
 
@@ -67,13 +67,7 @@ def sonar(proj) {
   }
 }
 
-// mvn versions:set -DallowSnapshots=true -DgenerateBackupPoms=false -DnewVersion=$VERSION
-def verset(ver, allowss) {
-  def mvnHome = tool 'M339'
-  sh ("'${mvnHome}/bin/mvn' -q versions:set -DallowSnapshots=${allowss} -DgenerateBackupPoms=false -DnewVersion=${ver}")
-}
-
-def release(proj) {
+def tag(proj) {
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   // Here you need to put stuff for atrifacts releasing
 
