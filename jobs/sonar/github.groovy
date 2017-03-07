@@ -14,19 +14,21 @@ node('master') {
         ]
       ]
     ])
+    stage('Prepare workspace') {
+        step([$class: 'WsCleanup'])
 
-    step([$class: 'WsCleanup'])
+        checkout scm
 
-    checkout scm
+        load "${PDIR}/vars.groovy"
+        functions = load "${PDIR}/functions.groovy"
 
-    load "${PDIR}/vars.groovy"
-    functions = load "${PDIR}/functions.groovy"
+    }
 
     stage('Check sources with SonarQube') {
 
-      get_code("${PROJECT}")
+        get_code("${PROJECT}")
 
-      functions.sonar("${PROJECT}")
+        functions.sonar("${PROJECT}")
 
     }
 
