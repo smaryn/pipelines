@@ -26,7 +26,7 @@ node('master') {
 
     stage('Check sources with SonarQube') {
 
-        get_code("${PROJECT}")
+        functions.get_code("${PROJECT}")
 
         functions.sonar("${PROJECT}")
 
